@@ -6,7 +6,7 @@ Site **statique** (HTML5 + CSS3 + JS vanilla), sans build ni framework : facile 
 ## Arborescence
 
 ```
-Tananka_Mié/
+tananka-mie/
 ├── index.html            # Accueil (H1 « Mié Tanaka », séances, bon cadeau)
 ├── tarifs.html           # Tarifs, présentation du Shiatsu, formation, coordonnées
 ├── contact.html          # Coordonnées + formulaire de contact
@@ -26,7 +26,7 @@ fonctionnent aussi en ouvrant `index.html` directement, mais un serveur évite
 les restrictions de certains navigateurs) :
 
 ```bash
-# Depuis le dossier Tananka_Mié/
+# Depuis le dossier tananka-mie/
 python3 -m http.server 8000
 # puis ouvrir http://localhost:8000
 ```
