@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Marque JS actif : n'masque les animations que si le JS tourne (a11y/SEO) -->
+  <script>document.documentElement.classList.add("js");</script>
+
+  <!-- ===== SEO : titre & description uniques ===== -->
+  <title>Mié Tanaka — Shiatsu, Tuina & énergétique à Besançon</title>
+  <meta name="description" content="Mié Tanaka, praticienne de Shiatsu, Tuina et énergétique chinoise à Besançon. Séances relaxantes sur rendez-vous pour libérer les tensions et retrouver la vitalité.">
+
+  <link rel="canonical" href="https://www.shiatsu-mie.com/">
+
+  <!-- Vérification Google Search Console : remplacer la valeur après connexion (étape manuelle) -->
+  <meta name="google-site-verification" content="À_COMPLÉTER">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="Mié Tanaka — Shiatsu, Tuina & énergétique à Besançon">
+  <meta property="og:description" content="Praticienne de Shiatsu, Tuina et énergétique chinoise à Besançon. Séances relaxantes sur rendez-vous.">
+  <meta property="og:url" content="https://www.shiatsu-mie.com/">
+  <meta property="og:image" content="https://www.shiatsu-mie.com/assets/images/og-image.svg">
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mié Tanaka — Shiatsu, Tuina & énergétique à Besançon">
+  <meta name="twitter:description" content="Praticienne de Shiatsu, Tuina et énergétique chinoise à Besançon. Séances relaxantes sur rendez-vous.">
+  <meta name="twitter:image" content="https://www.shiatsu-mie.com/assets/images/og-image.svg">
+
+  <!-- Favicon -->
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+
+  <!-- Polices : préconnexion + chargement non bloquant -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- ===== Données structurées Schema.org (référencement local) ===== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HealthAndBeautyBusiness",
+    "name": "Mié Tanaka — Shiatsu & Énergétique chinoise",
+    "image": "https://www.shiatsu-mie.com/assets/images/og-image.svg",
+    "url": "https://www.shiatsu-mie.com/",
+    "telephone": "+33633301793",
+    "email": "miaoumie@free.fr",
+    "priceRange": "€€",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "17 rue Saint-Just",
+      "postalCode": "25000",
+      "addressLocality": "Besançon",
+      "addressCountry": "FR"
+    },
+    "vatID": "",
+    "taxID": "51134774200039",
+    "makesOffer": [
+      { "@type": "Offer", "name": "Séance complète de Shiatsu", "price": "65", "priceCurrency": "EUR" },
+      { "@type": "Offer", "name": "Séance énergétique du visage", "price": "65", "priceCurrency": "EUR" },
+      { "@type": "Offer", "name": "Forfait 5 séances visage", "price": "300", "priceCurrency": "EUR" }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Aller au contenu principal</a>
+
+  <!-- ============ En-tête / navigation sticky ============ -->
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html">Mié Tanaka</a>
+      <button class="nav-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="primary-nav">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="main-nav" id="primary-nav" aria-label="Navigation principale">
+        <ul>
+          <li><a href="index.html" aria-current="page">Accueil</a></li>
+          <li><a href="tarifs.html">Tarifs</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============ Hero ============ -->
+    <section class="hero">
+      <!-- Illustrations décoratives (parallaxe léger, aria-hidden car décoratives) -->
+      <div class="hero__decor" aria-hidden="true">
+        <img class="hero__branch" data-parallax="0.12" src="assets/images/branch.svg"
+             alt="" width="300" height="420" loading="eager">
+        <img class="hero__bird" data-parallax="-0.06" src="assets/images/bird.svg"
+             alt="" width="200" height="160" loading="eager">
+      </div>
+      <div class="container">
+        <div class="hero__inner">
+          <h1>Mié Tanaka</h1>
+          <p class="hero__subtitle">Shiatsu · Tuina · Énergétique chinoise</p>
+          <p class="hero__text">Un moment précieux pour se détendre, libérer les tensions
+             et retrouver l'équilibre du corps et de l'esprit, à Besançon.</p>
+          <a class="btn btn--primary" href="contact.html">Prendre rendez-vous</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Séance complète ============ -->
+    <section class="section" aria-labelledby="seance-complete">
+      <div class="container">
+        <span class="eyebrow reveal">Shiatsu</span>
+        <h2 id="seance-complete" class="reveal">Séance complète</h2>
+        <div class="cards">
+          <div class="card reveal">
+            <ul>
+              <li>Se sentir bien dans son corps</li>
+              <li>Se libérer des tensions dues au stress</li>
+              <li>Éliminer la fatigue physique et psychologique</li>
+              <li>Entretenir son corps avant / après les efforts sportifs</li>
+              <li>Goûter un moment précieux pour s'occuper de soi-même</li>
+            </ul>
+            <div class="price">
+              <span class="price__amount">65 €</span>
+              <span class="price__detail">durée : environ 60 mn</span>
+              <span class="price__note">− 14 ans : 40 mn / 45 €</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Séance énergétique du visage ============ -->
+    <section class="section section--alt" aria-labelledby="seance-visage">
+      <div class="container">
+        <span class="eyebrow reveal">Tuina · soin du visage</span>
+        <h2 id="seance-visage" class="reveal">Séance énergétique du visage</h2>
+        <div class="cards">
+          <div class="card reveal">
+            <p>Très relaxante, cette séance redonne à la peau son éclat, sa tonicité et son
+               élasticité, par une tonification aux niveaux cutané et musculaire.</p>
+            <p>La séance est constituée de Tuina (massage énergétique chinois), acupression,
+               Gua Sha, Ridoki, avec des huiles et des eaux florales bio.</p>
+            <p><strong>En bonus, un petit massage sur les pieds.</strong></p>
+            <div class="price">
+              <span class="price__amount">65 €</span>
+              <span class="price__detail">durée : 70 mn</span>
+              <span class="price__note">Forfait 5 séances : 300 €</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Offrez un bon cadeau ============ -->
+    <section class="section" aria-labelledby="bon-cadeau">
+      <div class="container">
+        <div class="accent-block reveal">
+          <h2 id="bon-cadeau">Offrez un bon cadeau</h2>
+          <p>Offrez un bon cadeau à vos amis et à vos proches !</p>
+          <p>Les séances se font en individuel et sur rendez-vous.</p>
+          <p><a class="btn btn--ghost" href="contact.html">Nous contacter</a></p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ Footer (NAP cohérent) ============ -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <h2>Mié Tanaka</h2>
+        <p>Shiatsu, Tuina & énergétique chinoise à Besançon.</p>
+      </div>
+      <div>
+        <address>
+          17 rue Saint-Just — 25000 Besançon<br>
+          <a href="tel:+33633301793">06 33 30 17 93</a><br>
+          <a href="mailto:miaoumie@free.fr">miaoumie@free.fr</a><br>
+          <a href="https://www.shiatsu-mie.com">www.shiatsu-mie.com</a>
+        </address>
+      </div>
+      <div>
+        <nav aria-label="Liens de pied de page">
+          <p><a href="index.html">Accueil</a></p>
+          <p><a href="tarifs.html">Tarifs</a></p>
+          <p><a href="contact.html">Contact</a></p>
+        </nav>
+      </div>
+    </div>
+    <div class="container">
+      <p class="fine">N° SIRET 511 347 742 000 39 — © <span data-year>2026</span> Mié Tanaka. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>

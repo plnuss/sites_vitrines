@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Mié Tanaka — Shiatsu, Tuina et énergétique chinoise à Besançon">
+  <rect width="1200" height="630" fill="#F5EAD3"/>
+  <!-- filet décoratif -->
+  <rect x="40" y="40" width="1120" height="550" rx="8" fill="none" stroke="#8A8B5C" stroke-width="2" opacity="0.5"/>
+  <!-- branche décor à droite -->
+  <g transform="translate(900,60) scale(1.1)">
+    <path d="M250 10 C210 90 175 150 150 230 C132 288 122 350 118 410" stroke="#5F6138" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M138 152 C112 148 96 162 100 184 C126 184 140 172 138 152 Z" fill="#8A8B5C"/>
+    <path d="M150 230 C126 236 116 254 124 272 C146 266 156 250 150 230 Z" fill="#8A8B5C"/>
+    <circle cx="196" cy="112" r="9" fill="#C0392B"/>
+    <circle cx="150" cy="234" r="8.5" fill="#C0392B"/>
+    <circle cx="132" cy="304" r="8" fill="#C0392B"/>
+  </g>
+  <text x="90" y="300" font-family="Georgia, 'Times New Roman', serif" font-size="96" fill="#3A322B">Mié Tanaka</text>
+  <text x="94" y="360" font-family="Arial, sans-serif" font-size="34" letter-spacing="2" fill="#C0392B">SHIATSU · TUINA · ÉNERGÉTIQUE CHINOISE</text>
+  <text x="94" y="430" font-family="Arial, sans-serif" font-size="30" fill="#6A5F54">Besançon — 17 rue Saint-Just</text>
+</svg>

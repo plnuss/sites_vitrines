@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 420" fill="none" role="img" aria-label="Illustration d'une branche fine avec feuilles vertes et petits fruits rouges, dans un esprit botanique japonisant">
+  <!-- Tige principale -->
+  <path d="M250 10 C210 90 175 150 150 230 C132 288 122 350 118 410"
+        stroke="#5F6138" stroke-width="3" stroke-linecap="round"/>
+  <!-- Ramifications -->
+  <path d="M198 108 C170 118 150 130 138 152" stroke="#5F6138" stroke-width="2" stroke-linecap="round"/>
+  <path d="M168 200 C198 206 218 220 228 244" stroke="#5F6138" stroke-width="2" stroke-linecap="round"/>
+  <path d="M138 300 C112 306 96 320 88 342" stroke="#5F6138" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Feuilles (olive) -->
+  <g fill="#8A8B5C">
+    <path d="M138 152 C112 148 96 162 100 184 C126 184 140 172 138 152 Z"/>
+    <path d="M228 244 C254 244 268 258 262 280 C238 276 226 264 228 244 Z"/>
+    <path d="M88 342 C64 338 50 352 56 372 C80 372 92 360 88 342 Z"/>
+    <path d="M210 70 C232 60 250 68 252 88 C230 94 214 88 210 70 Z"/>
+    <path d="M150 230 C126 236 116 254 124 272 C146 266 156 250 150 230 Z"/>
+  </g>
+  <!-- Nervures -->
+  <g stroke="#5F6138" stroke-width="1" opacity="0.7">
+    <path d="M120 180 C126 170 132 160 138 154"/>
+    <path d="M244 276 C240 266 234 256 228 246"/>
+    <path d="M74 368 C80 358 86 348 90 344"/>
+  </g>
+
+  <!-- Petits fruits rouges -->
+  <g fill="#C0392B">
+    <circle cx="196" cy="112" r="9"/>
+    <circle cx="212" cy="128" r="7"/>
+    <circle cx="150" cy="234" r="8.5"/>
+    <circle cx="132" cy="304" r="8"/>
+  </g>
+  <g stroke="#5F6138" stroke-width="1.6" stroke-linecap="round">
+    <path d="M196 103 C199 98 203 98 205 101"/>
+    <path d="M150 225 C153 220 157 220 159 223"/>
+  </g>
+</svg>
