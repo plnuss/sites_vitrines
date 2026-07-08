@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 160" fill="none" role="img" aria-label="Oiseau stylisé perché, illustration d'inspiration estampe japonaise">
+  <!-- Corps -->
+  <path d="M60 96 C58 70 78 52 106 54 C132 56 150 74 150 96 C150 114 132 124 108 124 C84 124 62 116 60 96 Z" fill="#8A8B5C"/>
+  <!-- Aile -->
+  <path d="M96 78 C118 70 140 74 152 92 C138 100 118 104 100 100 C90 96 90 84 96 78 Z" fill="#5F6138"/>
+  <!-- Queue -->
+  <path d="M150 96 C168 92 186 96 196 104 C184 110 166 112 152 108 Z" fill="#5F6138"/>
+  <!-- Tête & bec -->
+  <circle cx="72" cy="74" r="4" fill="#3A322B"/>
+  <path d="M62 78 L48 74 L62 84 Z" fill="#C0392B"/>
+  <!-- Patte / perchoir -->
+  <path d="M100 124 L96 142 M112 124 L116 142" stroke="#3A322B" stroke-width="2" stroke-linecap="round"/>
+  <path d="M70 142 C110 138 150 138 190 142" stroke="#5F6138" stroke-width="2.5" stroke-linecap="round"/>
+</svg>

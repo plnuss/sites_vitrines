@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Marque JS actif : n'masque les animations que si le JS tourne (a11y/SEO) -->
+  <script>document.documentElement.classList.add("js");</script>
+
+  <!-- ===== SEO ===== -->
+  <title>Contact & rendez-vous Shiatsu à Besançon — Mié Tanaka</title>
+  <meta name="description" content="Contactez Mié Tanaka pour un rendez-vous de Shiatsu ou de Tuina à Besançon : 17 rue Saint-Just, 06 33 30 17 93. Séances en individuel et sur rendez-vous.">
+
+  <link rel="canonical" href="https://www.shiatsu-mie.com/contact.html">
+  <meta name="google-site-verification" content="À_COMPLÉTER">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="Contact & rendez-vous Shiatsu à Besançon — Mié Tanaka">
+  <meta property="og:description" content="Contactez Mié Tanaka pour un rendez-vous de Shiatsu ou de Tuina à Besançon.">
+  <meta property="og:url" content="https://www.shiatsu-mie.com/contact.html">
+  <meta property="og:image" content="https://www.shiatsu-mie.com/assets/images/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contact & rendez-vous Shiatsu à Besançon — Mié Tanaka">
+  <meta name="twitter:description" content="Contactez Mié Tanaka pour un rendez-vous de Shiatsu ou de Tuina à Besançon.">
+  <meta name="twitter:image" content="https://www.shiatsu-mie.com/assets/images/og-image.svg">
+
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HealthAndBeautyBusiness",
+    "name": "Mié Tanaka — Shiatsu & Énergétique chinoise",
+    "image": "https://www.shiatsu-mie.com/assets/images/og-image.svg",
+    "url": "https://www.shiatsu-mie.com/contact.html",
+    "telephone": "+33633301793",
+    "email": "miaoumie@free.fr",
+    "priceRange": "€€",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "17 rue Saint-Just",
+      "postalCode": "25000",
+      "addressLocality": "Besançon",
+      "addressCountry": "FR"
+    },
+    "taxID": "51134774200039"
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Aller au contenu principal</a>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html">Mié Tanaka</a>
+      <button class="nav-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="primary-nav">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="main-nav" id="primary-nav" aria-label="Navigation principale">
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="tarifs.html">Tarifs</a></li>
+          <li><a href="contact.html" aria-current="page">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="section" aria-labelledby="titre-contact">
+      <div class="container">
+        <span class="eyebrow reveal">Prendre rendez-vous</span>
+        <h1 id="titre-contact" class="reveal">Contact</h1>
+        <p class="lead reveal">Les séances se font en individuel et sur rendez-vous.
+           N'hésitez pas à me contacter par téléphone, e-mail ou via le formulaire ci-dessous.</p>
+
+        <div class="info-grid" style="margin-top:2.5rem">
+
+          <!-- Coordonnées (NAP cohérent) -->
+          <div class="contact-card reveal">
+            <h2>Coordonnées</h2>
+            <dl>
+              <dt>Adresse</dt><dd><address>17 rue Saint-Just — 25000 Besançon</address></dd>
+              <dt>Téléphone</dt><dd><a href="tel:+33633301793">06 33 30 17 93</a></dd>
+              <dt>E-mail</dt><dd><a href="mailto:miaoumie@free.fr">miaoumie@free.fr</a></dd>
+            </dl>
+            <p style="margin-top:1.5rem">
+              <a class="btn btn--primary" href="tel:+33633301793">Appeler</a>
+            </p>
+          </div>
+
+          <!-- Formulaire de contact
+               NB : site statique = pas de serveur. Deux options au choix :
+               1) Remplacer l'action par votre endpoint (Formspree, Basin, etc.)  [À COMPLÉTER]
+               2) Supprimer le formulaire et ne garder que tél / e-mail.
+               Le champ "hidden" honeypot limite le spam. -->
+          <div class="contact-card reveal">
+            <h2>Écrire un message</h2>
+            <form class="form" action="https://formspree.io/f/À_COMPLÉTER" method="POST">
+              <div>
+                <label for="nom">Nom</label>
+                <input type="text" id="nom" name="nom" autocomplete="name" required>
+              </div>
+              <div>
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" autocomplete="email" required>
+              </div>
+              <div>
+                <label for="message">Message</label>
+                <textarea id="message" name="message" required></textarea>
+              </div>
+              <!-- Honeypot anti-spam (caché aux humains) -->
+              <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
+              <button class="btn btn--primary" type="submit">Envoyer</button>
+              <p class="form__note">En cas de problème, écrivez directement à
+                 <a href="mailto:miaoumie@free.fr">miaoumie@free.fr</a>.</p>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <h2>Mié Tanaka</h2>
+        <p>Shiatsu, Tuina & énergétique chinoise à Besançon.</p>
+      </div>
+      <div>
+        <address>
+          17 rue Saint-Just — 25000 Besançon<br>
+          <a href="tel:+33633301793">06 33 30 17 93</a><br>
+          <a href="mailto:miaoumie@free.fr">miaoumie@free.fr</a><br>
+          <a href="https://www.shiatsu-mie.com">www.shiatsu-mie.com</a>
+        </address>
+      </div>
+      <div>
+        <nav aria-label="Liens de pied de page">
+          <p><a href="index.html">Accueil</a></p>
+          <p><a href="tarifs.html">Tarifs</a></p>
+          <p><a href="contact.html">Contact</a></p>
+        </nav>
+      </div>
+    </div>
+    <div class="container">
+      <p class="fine">N° SIRET 511 347 742 000 39 — © <span data-year>2026</span> Mié Tanaka. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>
