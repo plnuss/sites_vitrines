@@ -94,9 +94,9 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Overlay plein ecran mobile */}
+      {/* Overlay plein ecran mobile — fond totalement opaque pour la lisibilite */}
       <div
-        className={`fixed inset-0 z-40 flex flex-col bg-night/98 backdrop-blur transition-all duration-300 lg:hidden ${
+        className={`fixed inset-0 z-40 flex flex-col bg-night transition-opacity duration-300 lg:hidden ${
           menuOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
         }`}
       >
