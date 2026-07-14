@@ -3,9 +3,10 @@ import { GALLERY, GALLERY_INTRO } from "@/lib/content";
 import Reveal from "./Reveal";
 
 /*
-  GallerySection — mosaïque de photos trail / montagne. La première image
-  occupe une tuile 2x2 (mise en avant) ; les autres remplissent une grille
-  4x2 sur desktop. Overlay sombre + légende au survol.
+  GallerySection — mosaïque de 4 photos trail / montagne. La première image
+  occupe une tuile 2x2 (mise en avant) ; la dernière occupe toute la largeur
+  restante pour combler exactement la grille (2x4 = 8 cellules, sans trou).
+  Overlay sombre + légende au survol.
 */
 export default function GallerySection() {
   return (
@@ -27,7 +28,7 @@ export default function GallerySection() {
               <figure
                 key={i}
                 className={`group relative overflow-hidden rounded-2xl border border-forest-line ${
-                  i === 0 ? "col-span-2 row-span-2" : ""
+                  i === 0 ? "col-span-2 row-span-2" : i === GALLERY.length - 1 ? "col-span-2" : ""
                 }`}
               >
                 <Image

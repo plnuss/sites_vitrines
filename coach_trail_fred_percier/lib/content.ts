@@ -60,8 +60,8 @@ export const HERO = {
 
 // --- Le Coach ---------------------------------------------------------------
 export const COACH = {
-  // Deux traileurs sur un sentier de montagne.
-  image: unsplash("photo-1551632811-561732d1e306", 1000, 72),
+  // Photo fournie par le client.
+  image: "/images/photo_fred.jpg",
   name: "Frédéric Percier",
   role: "Coach diplômé d'État · DEJEPS Performance Sportive",
   intro:
@@ -105,28 +105,23 @@ export const GALLERY_INTRO = {
 
 export const GALLERY: GalleryItem[] = [
   {
-    src: unsplash("photo-1441974231531-c6227db76b6e", 1000, 68),
-    alt: "Sentier de single track en sous-bois",
+    src: "/images/singletrack_foret.jpg",
+    alt: "Traileur en plein saut sur un single track en forêt",
     caption: "Single track en forêt",
   },
   {
-    src: unsplash("photo-1461896836934-ffe607ba8211", 700, 68),
-    alt: "Groupe de coureurs à contre-jour au lever du jour",
+    src: "/images/sortie_aube.jpg",
+    alt: "Coureur de dos face à la montagne au lever du jour",
     caption: "Sorties à l'aube",
   },
   {
-    src: unsplash("photo-1476480862126-209bfaa8edc8", 700, 68),
-    alt: "Foulée dans un escalier, chaussures de running",
+    src: "/images/renforcement.jpg",
+    alt: "Athlète en plein soulevé de terre en salle de renforcement",
     caption: "Renforcement & côtes",
   },
   {
-    src: unsplash("photo-1464822759023-fed622ff2c3b", 700, 68),
-    alt: "Vallée de montagne bordée de conifères",
-    caption: "Reconnaissance de parcours",
-  },
-  {
-    src: unsplash("photo-1454496522488-7a8e488e8606", 1000, 68),
-    alt: "Chaîne de haute montagne enneigée",
+    src: "/images/objectif_ultra.jpg",
+    alt: "Deux traileurs progressant sur un sentier technique en forêt",
     caption: "Objectifs ultra en altitude",
   },
 ];
