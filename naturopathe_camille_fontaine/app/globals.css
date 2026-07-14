@@ -1,0 +1,156 @@
+@import "tailwindcss";
+
+@theme {
+  /* Palette adoucie — pastels dans les mêmes codes couleurs */
+  --color-cream: #fbf8f1;
+  --color-cream-dark: #f2e9d8;
+  --color-sauge: #96ae8d;
+  --color-sauge-pastel: #dfe8d8;
+  --color-sauge-dark: #5e7354;
+  --color-miel: #c9922e;
+  --color-miel-light: #e7c67e;
+  --color-miel-pastel: #f7e9c8;
+  --color-apricot: #f6dcc0;
+  --color-brun: #3b2a20;
+  --color-brun-soft: #6e5a49;
+
+  --font-serif: var(--font-fraunces);
+  --font-sans: var(--font-nunito);
+  --font-script: var(--font-caveat);
+}
+
+body {
+  font-family: var(--font-sans), sans-serif;
+  letter-spacing: -0.006em;
+}
+
+h1,
+h2,
+h3,
+h4,
+.font-serif {
+  font-family: var(--font-serif), serif;
+  letter-spacing: -0.02em;
+}
+
+.font-script {
+  font-family: var(--font-script), cursive;
+}
+
+/* Dégradés réutilisables (pastel / monochrome) */
+.bg-gradient-hero {
+  background: linear-gradient(
+    155deg,
+    #fbf8f1 0%,
+    #f1ead7 34%,
+    #e4ecdd 66%,
+    #f6e8c8 100%
+  );
+}
+.bg-gradient-honey {
+  background: linear-gradient(180deg, #fbf8f1 0%, #f7ecd2 55%, #f3e2be 100%);
+}
+.bg-gradient-gold {
+  background: linear-gradient(135deg, #f3d491 0%, #e9bf82 55%, #f0d8b8 100%);
+}
+.bg-gradient-sage {
+  background: linear-gradient(180deg, #fbf8f1 0%, #e6ecdf 100%);
+}
+
+/* Soulignement manuscrit décoratif sous certains titres */
+.underline-brush {
+  position: relative;
+  display: inline-block;
+}
+.underline-brush::after {
+  content: "";
+  position: absolute;
+  left: -2%;
+  right: -2%;
+  bottom: -0.18em;
+  height: 0.42em;
+  background: var(--color-miel-light);
+  opacity: 0.55;
+  border-radius: 9999px;
+  transform: rotate(-1.2deg);
+  z-index: -1;
+}
+
+/* Reveal on scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Particules pollen / feuilles flottantes */
+.pollen {
+  position: absolute;
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle,
+    rgba(201, 146, 46, 0.45),
+    rgba(201, 146, 46, 0)
+  );
+  pointer-events: none;
+  animation: float-pollen linear infinite;
+}
+
+@keyframes float-pollen {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.7;
+  }
+  90% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(var(--drift, 40px), -110vh) scale(0.6);
+    opacity: 0;
+  }
+}
+
+/* Indicateur de scroll animé */
+@keyframes scroll-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(6px);
+    opacity: 1;
+  }
+}
+.scroll-bob {
+  animation: scroll-bob 1.8s ease-in-out infinite;
+}
+
+/* Wave divider */
+.wave-divider svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .pollen,
+  .scroll-bob {
+    animation: none;
+  }
+  .pollen {
+    display: none;
+  }
+}
