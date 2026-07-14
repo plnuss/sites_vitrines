@@ -30,7 +30,7 @@ export function Header() {
           : "bg-transparent"
       }`}
     >
-      <div className="mx-auto max-w-7xl px-5 sm:px-8 flex items-center justify-between h-18 py-3">
+      <div className="relative z-[70] mx-auto max-w-7xl px-5 sm:px-8 flex items-center justify-between h-18 py-3">
         <a
           href="#accueil"
           className="font-serif text-lg sm:text-xl font-medium text-brun leading-tight"
@@ -74,9 +74,13 @@ export function Header() {
 
       {/* Overlay mobile plein écran */}
       <div
-        className={`lg:hidden fixed inset-0 top-0 bg-cream transition-opacity duration-300 ${
-          menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        aria-hidden={!menuOpen}
+        className={`lg:hidden fixed inset-0 top-0 z-[60] transition-transform duration-300 ease-out ${
+          menuOpen
+            ? "translate-x-0 pointer-events-auto"
+            : "translate-x-full pointer-events-none"
         }`}
+        style={{ backgroundColor: "#FBF8F1" }}
       >
         <div className="flex flex-col h-full pt-24 px-8 gap-2">
           {nav.map((item, i) => (
