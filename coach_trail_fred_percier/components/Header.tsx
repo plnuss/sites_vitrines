@@ -27,80 +27,89 @@ export default function Header() {
   }, [menuOpen]);
 
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled || menuOpen
-          ? "bg-night/95 shadow-lg shadow-black/40 backdrop-blur"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 md:h-20 md:px-8">
-        {/* Logo texte */}
-        <a href="#top" className="group flex flex-col leading-none" onClick={() => setMenuOpen(false)}>
-          <span className="font-display text-lg tracking-wide text-bone md:text-xl">
-            {BRAND.name}
-          </span>
-          <span className="text-[0.62rem] uppercase tracking-[0.22em] text-ember md:text-xs">
-            {BRAND.tagline}
-          </span>
-        </a>
+    <>
+      <header
+        className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+          scrolled || menuOpen
+            ? "bg-night/95 shadow-lg shadow-black/40 backdrop-blur"
+            : "bg-transparent"
+        }`}
+      >
+        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 md:h-20 md:px-8">
+          {/* Logo texte */}
+          <a href="#top" className="group flex flex-col leading-none" onClick={() => setMenuOpen(false)}>
+            <span className="font-display text-lg tracking-wide text-bone md:text-xl">
+              {BRAND.name}
+            </span>
+            <span className="text-[0.62rem] uppercase tracking-[0.22em] text-ember md:text-xs">
+              {BRAND.tagline}
+            </span>
+          </a>
 
-        {/* Navigation desktop */}
-        <nav className="hidden items-center gap-7 lg:flex">
-          {NAV_LINKS.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-sm text-bone-dim transition-colors duration-200 hover:text-bone"
-            >
-              {link.label}
-            </a>
-          ))}
-        </nav>
+          {/* Navigation desktop */}
+          <nav className="hidden items-center gap-7 lg:flex">
+            {NAV_LINKS.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="text-sm text-bone-dim transition-colors duration-200 hover:text-bone"
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
 
-        {/* CTA desktop */}
-        <a
-          href={BOOKING_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hidden rounded-full bg-ember px-5 py-2.5 text-sm font-semibold text-night transition-transform duration-200 hover:-translate-y-0.5 hover:bg-ember-soft lg:inline-block"
-        >
-          Réserver un appel gratuit
-        </a>
+          {/* CTA desktop */}
+          <a
+            href={BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden rounded-full bg-ember px-5 py-2.5 text-sm font-semibold text-night transition-transform duration-200 hover:-translate-y-0.5 hover:bg-ember-soft lg:inline-block"
+          >
+            Réserver un appel gratuit
+          </a>
 
-        {/* Bouton hamburger (mobile / tablette) */}
-        <button
-          type="button"
-          aria-label={menuOpen ? "Fermer le menu" : "Ouvrir le menu"}
-          aria-expanded={menuOpen}
-          onClick={() => setMenuOpen((v) => !v)}
-          className="relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-1.5 lg:hidden"
-        >
-          <span
-            className={`h-0.5 w-6 bg-bone transition-all duration-300 ${
-              menuOpen ? "translate-y-2 rotate-45" : ""
-            }`}
-          />
-          <span
-            className={`h-0.5 w-6 bg-bone transition-all duration-300 ${
-              menuOpen ? "opacity-0" : ""
-            }`}
-          />
-          <span
-            className={`h-0.5 w-6 bg-bone transition-all duration-300 ${
-              menuOpen ? "-translate-y-2 -rotate-45" : ""
-            }`}
-          />
-        </button>
-      </div>
+          {/* Bouton hamburger (mobile / tablette) */}
+          <button
+            type="button"
+            aria-label={menuOpen ? "Fermer le menu" : "Ouvrir le menu"}
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen((v) => !v)}
+            className="relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-1.5 lg:hidden"
+          >
+            <span
+              className={`h-0.5 w-6 bg-bone transition-all duration-300 ${
+                menuOpen ? "translate-y-2 rotate-45" : ""
+              }`}
+            />
+            <span
+              className={`h-0.5 w-6 bg-bone transition-all duration-300 ${
+                menuOpen ? "opacity-0" : ""
+              }`}
+            />
+            <span
+              className={`h-0.5 w-6 bg-bone transition-all duration-300 ${
+                menuOpen ? "-translate-y-2 -rotate-45" : ""
+              }`}
+            />
+          </button>
+        </div>
+      </header>
 
-      {/* Overlay plein ecran mobile — fond totalement opaque pour la lisibilite */}
+      {/*
+        Overlay plein ecran mobile — rendu en dehors du <header> (qui est
+        lui-meme position:fixed) pour eviter un bug d'imbrication fixed-dans-fixed
+        observe sur certains navigateurs mobiles (Safari iOS notamment), ou la
+        hauteur de l'overlay se recalculait mal et laissait le contenu de la
+        page transparaitre derriere le menu. Hauteur explicite en `dvh` (et non
+        seulement inset-0) pour garantir qu'il couvre tout le viewport reel.
+      */}
       <div
-        className={`fixed inset-0 z-40 flex flex-col bg-night transition-opacity duration-300 lg:hidden ${
+        className={`fixed inset-0 z-40 h-dvh w-screen flex flex-col overflow-y-auto bg-night transition-opacity duration-300 lg:hidden ${
           menuOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
         }`}
       >
-        <nav className="flex flex-1 flex-col items-center justify-center gap-7">
+        <nav className="flex flex-1 flex-col items-center justify-center gap-7 py-24">
           {NAV_LINKS.map((link) => (
             <a
               key={link.href}
@@ -122,6 +131,6 @@ export default function Header() {
           </a>
         </nav>
       </div>
-    </header>
+    </>
   );
 }
