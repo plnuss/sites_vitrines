@@ -6,15 +6,16 @@
 
 /* ---------- 1. Variables : palette, typo, espacements ---------- */
 :root {
-  /* Couleurs (reprise modernisée de l'identité existante) */
-  --cream:       #F5EAD3;   /* fond principal, ivoire chaud */
-  --cream-deep:  #EFE1C3;   /* cartes / sections alternées */
-  --olive:       #8A8B5C;   /* accent kaki : motifs, feuillages, filets */
-  --olive-deep:  #5F6138;   /* kaki foncé : blocs pleins (texte crème dessus) */
-  --cherry:      #C0392B;   /* accent cerise : titres clés, hover, focus */
-  --cherry-dark: #9E2E22;   /* cerise foncé pour hover */
-  --ink:         #3A322B;   /* texte principal, gris-brun (jamais noir pur) */
-  --ink-soft:    #6A5F54;   /* texte secondaire / légendes */
+  /* Couleurs — direction artistique validée (papier japonais / estampe) */
+  --cream:       #F3E9D6;   /* fond principal, crème/beige papier */
+  --cream-deep:  #ECDFC6;   /* cartes / sections alternées */
+  --olive:       #8A8B5C;   /* vert olive : feuillages */
+  --olive-deep:  #5F6138;   /* olive foncé : tiges, contours gravure, blocs pleins */
+  --cherry:      #B5432E;   /* rouge brique : sous-titre, baies, CTA, focus */
+  --cherry-dark: #98371F;   /* rouge brique foncé pour hover */
+  --ink:         #2E2A24;   /* texte titres, anthracite (jamais noir pur) */
+  --ink-soft:    #5B5347;   /* texte courant gris-brun doux */
+  --blossom:     #E7C4BC;   /* rose poudré très discret : fleurs de cerisier */
 
   /* Typographie */
   --font-title: "Cormorant Garamond", Georgia, "Times New Roman", serif;
@@ -185,6 +186,9 @@ h3 { font-size: clamp(1.3rem, 2.5vw, 1.6rem); }
   min-height: min(88vh, 760px);
   display: flex;
   align-items: center;
+  /* Fond crème propre au hero : évite un doublon avec le motif global du body
+     et permet au motif local (.hero__pattern) d'être animé en parallaxe. */
+  background: var(--cream);
 }
 .hero__inner { position: relative; z-index: 2; max-width: 40ch; }
 .hero h1 { color: var(--ink); margin-bottom: 0.1em; }
@@ -197,23 +201,39 @@ h3 { font-size: clamp(1.3rem, 2.5vw, 1.6rem); }
 }
 .hero__text { font-size: 1.15rem; color: var(--ink-soft); margin-bottom: 2rem; }
 
-/* Illustrations botaniques décoratives (parallaxe léger via JS) */
-.hero__decor { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
-.hero__branch {
+/* ---------- 5b. Hero : scène décorative vivante ----------
+   Empilement : .hero__pattern (z0, motif parallaxe) < .hero__scene (z1,
+   feuillages + oiseau) < .hero__inner (z2, texte/CTA). Tout est décoratif
+   donc aria-hidden + pointer-events:none pour ne pas gêner clavier/lecteur. */
+.hero__pattern {
   position: absolute;
-  top: -4%;
-  right: -2%;
-  width: clamp(180px, 34vw, 420px);
-  opacity: 0.92;
+  inset: -12% 0;
+  z-index: 0;
+  background: url("../images/seigaiha.svg") repeat;
+  background-size: 200px auto;
+  opacity: 0.5;
+  pointer-events: none;
   will-change: transform;
 }
+.hero__scene { position: absolute; inset: 0; z-index: 1; overflow: hidden; pointer-events: none; }
+
+/* Feuillages (branches olive, baies rouge brique, fleurs discrètes) */
+.hero__foliage { position: absolute; }
+.hero__foliage--tr { top: -3%;  right: -2%; width: clamp(200px, 32vw, 400px); }
+.hero__foliage--bl { bottom: -2%; left: -3%; width: clamp(150px, 22vw, 280px); }
+.hero__foliage--br { bottom: -4%; right: 4%; width: clamp(120px, 16vw, 200px); }
+/* Branche filigrane derrière le texte : très faible opacité, ne nuit pas à la lecture */
+.hero__watermark { position: absolute; top: 8%; left: 4%; width: clamp(240px, 40vw, 460px); color: var(--olive-deep); opacity: 0.07; }
+
+.hero [data-parallax] { will-change: transform; }
+
+/* Oiseau posé au sol (part droite/basse, zone dégagée) */
 .hero__bird {
   position: absolute;
-  bottom: 12%;
-  right: clamp(4%, 22vw, 26%);
-  width: clamp(110px, 16vw, 190px);
-  opacity: 0.9;
-  will-change: transform;
+  bottom: 9%;
+  left: clamp(38%, 46vw, 52%);
+  width: clamp(96px, 14vw, 158px);
+  z-index: 1;
 }
 
 /* ---------- 6. Boutons ---------- */
@@ -344,6 +364,57 @@ address { font-style: normal; }
 .reveal[data-delay="2"] { transition-delay: 0.16s; }
 .reveal[data-delay="3"] { transition-delay: 0.24s; }
 
+/* ---------- 11b. Hero : animations d'ambiance & envol de l'oiseau ----------
+   Toutes les animations n'utilisent que transform/opacity (pas de reflow).
+   Réglages faciles à ajuster : durées via --dur, décalages via --delay,
+   easings et distances dans les @keyframes ci-dessous. */
+
+/* Balancement lent et discret des feuillages (idle, boucle infinie) */
+.sway, .blossom { transform-box: fill-box; transform-origin: 50% 8%; }
+@keyframes sway { 0%, 100% { transform: rotate(-1.4deg); } 50% { transform: rotate(1.4deg); } }
+.sway { animation: sway var(--dur, 8s) ease-in-out var(--delay, 0s) infinite; }
+
+/* Respiration très légère des fleurs de cerisier */
+@keyframes blossom-breathe { 0%, 100% { transform: rotate(-2deg) scale(1); } 50% { transform: rotate(2deg) scale(1.04); } }
+.blossom { animation: blossom-breathe var(--dur, 7s) ease-in-out var(--delay, 0s) infinite; }
+
+/* Apparition en cascade du bloc titre / sous-titre / texte / CTA (au chargement).
+   Masqué uniquement si JS actif (classe .js) → visible même sans JS. */
+@keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+.js .hero .rise {
+  opacity: 0;
+  animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+  animation-delay: calc(var(--i, 0) * 130ms);
+}
+
+/* Oiseau — battement d'ailes (uniquement pendant l'envol) */
+.bird__wing { transform-box: fill-box; transform-origin: 8% 55%; }
+@keyframes wingflap { 0%, 100% { transform: rotate(2deg); } 50% { transform: rotate(-30deg); } }
+.hero__bird.is-flying .bird__wing { animation: wingflap 0.17s ease-in-out infinite; }
+
+/* Ombre au sol qui s'efface au décollage */
+.bird__shadow { transition: opacity 0.3s ease; }
+.hero__bird.is-flying .bird__shadow,
+.hero__bird.is-landing .bird__shadow { opacity: 0; }
+
+/* Oiseau — envol : accroupissement puis trajectoire courbe vers le haut-droit */
+@keyframes bird-takeoff {
+  0%   { transform: translate(0, 0) rotate(0) scale(1); opacity: 1; }
+  10%  { transform: translate(-4px, 6px) rotate(-2deg) scale(1, 0.94); opacity: 1; } /* accroupissement */
+  45%  { transform: translate(70px, -120px) rotate(-10deg) scale(0.92); opacity: 1; } /* montée en arc */
+  100% { transform: translate(180px, -300px) rotate(-16deg) scale(0.62); opacity: 0; } /* fondu vers la branche */
+}
+.hero__bird.is-flying { animation: bird-takeoff 0.9s cubic-bezier(0.36, 0.06, 0.4, 1) forwards; }
+
+/* Oiseau — retour (reset propre quand on remonte en haut de page) */
+@keyframes bird-land {
+  0%   { transform: translate(180px, -300px) rotate(-16deg) scale(0.62); opacity: 0; }
+  30%  { opacity: 1; }
+  60%  { transform: translate(70px, -120px) rotate(-8deg) scale(0.9); opacity: 1; }
+  100% { transform: translate(0, 0) rotate(0) scale(1); opacity: 1; }
+}
+.hero__bird.is-landing { animation: bird-land 0.8s cubic-bezier(0.2, 0.7, 0.3, 1) both; }
+
 /* ---------- 12. Page 404 ---------- */
 .error-page { min-height: 70vh; display: grid; place-items: center; text-align: center; }
 .error-page .display { font-family: var(--font-title); font-size: clamp(5rem, 18vw, 10rem); color: var(--cherry); line-height: 1; }
@@ -364,7 +435,14 @@ address { font-style: normal; }
   .main-nav.is-open { max-height: 320px; }
   .main-nav ul { flex-direction: column; padding: 1rem clamp(1.2rem, 5vw, 2.5rem); gap: 0.4rem; }
   .main-nav a { display: block; padding: 0.6rem 0; }
-  .hero__bird { display: none; } /* on allège le hero sur mobile */
+  /* Scène allégée sur mobile : on ne garde que la branche haut-droite, loin
+     du texte. Oiseau, cluster bas-gauche, filigrane et sprig bas-droite retirés
+     pour préserver la lisibilité et les performances. */
+  .hero__bird,
+  .hero__foliage--bl,
+  .hero__foliage--br,
+  .hero__watermark { display: none; }
+  .hero__foliage--tr { width: clamp(150px, 42vw, 220px); opacity: 0.9; }
 }
 
 /* ---------- 14. Préférence de réduction de mouvement ---------- */
@@ -375,5 +453,9 @@ address { font-style: normal; }
     transition-duration: 0.001ms !important;
   }
   .reveal { opacity: 1; transform: none; }
-  /* La parallaxe est aussi désactivée côté JS */
+  /* Feuillages et titre restent statiques et pleinement visibles ; l'oiseau
+     reste posé (le JS n'ajoute jamais les classes d'envol dans ce mode).
+     La parallaxe est également désactivée côté JS. */
+  .sway, .blossom { animation: none !important; }
+  .hero .rise { opacity: 1 !important; animation: none !important; }
 }

@@ -90,20 +90,125 @@
 
     <!-- ============ Hero ============ -->
     <section class="hero">
-      <!-- Illustrations décoratives (parallaxe léger, aria-hidden car décoratives) -->
-      <div class="hero__decor" aria-hidden="true">
-        <img class="hero__branch" data-parallax="0.12" src="assets/images/branch.svg"
-             alt="" width="300" height="420" loading="eager">
-        <img class="hero__bird" data-parallax="-0.06" src="assets/images/bird.svg"
-             alt="" width="200" height="160" loading="eager">
+
+      <!-- Motif de cercles concentriques (parallaxe très léger au scroll) -->
+      <div class="hero__pattern" data-parallax="0.16" aria-hidden="true"></div>
+
+      <!-- Scène botanique décorative (SVG inline, aria-hidden). Style estampe :
+           tiges olive foncé, feuilles vert olive, baies rouge brique, fleurs de
+           cerisier rose poudré très discrètes. Voir main.js pour l'envol. -->
+      <div class="hero__scene" aria-hidden="true">
+
+        <!-- Branche filigrane derrière le texte (opacité 0.07, n'entrave pas la lecture) -->
+        <svg class="hero__watermark" viewBox="0 0 300 420" fill="none" focusable="false">
+          <path d="M10 12 C60 90 96 150 120 232 C138 292 150 352 154 412" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+          <path d="M96 150 C126 158 150 172 162 196" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+          <path d="M120 232 C92 240 74 256 66 282" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+          <path d="M162 196 C188 196 204 214 198 238 C172 234 158 218 162 196 Z" fill="currentColor"/>
+          <path d="M66 282 C40 276 24 292 30 316 C56 316 70 300 66 282 Z" fill="currentColor"/>
+        </svg>
+
+        <!-- Branche principale, haut-droite -->
+        <svg class="hero__foliage hero__foliage--tr" data-parallax="0.10" viewBox="0 0 300 460" fill="none" focusable="false">
+          <path d="M294 6 C256 70 226 132 206 214 C190 276 180 340 176 452" stroke="#5F6138" stroke-width="3" stroke-linecap="round"/>
+          <path d="M232 96 C202 104 180 118 168 142" stroke="#5F6138" stroke-width="2" stroke-linecap="round"/>
+          <path d="M198 220 C228 226 250 240 262 266" stroke="#5F6138" stroke-width="2" stroke-linecap="round"/>
+          <path d="M182 330 C154 336 136 350 128 374" stroke="#5F6138" stroke-width="2" stroke-linecap="round"/>
+          <g class="sway" style="--dur:7s">
+            <path d="M168 142 C140 136 122 150 126 174 C154 176 170 164 168 142 Z" fill="#8A8B5C"/>
+          </g>
+          <g class="sway" style="--dur:8.5s;--delay:-2s">
+            <path d="M262 266 C290 266 306 282 300 306 C274 302 260 288 262 266 Z" fill="#8A8B5C"/>
+          </g>
+          <g class="sway" style="--dur:9s;--delay:-4s">
+            <path d="M128 374 C102 368 86 384 92 408 C118 408 132 392 128 374 Z" fill="#8A8B5C"/>
+          </g>
+          <g class="sway" style="--dur:7.8s;--delay:-1s">
+            <path d="M216 60 C240 50 260 58 262 80 C238 86 220 78 216 60 Z" fill="#8A8B5C"/>
+          </g>
+          <circle cx="226" cy="100" r="8.5" fill="#B5432E"/>
+          <circle cx="242" cy="116" r="6.5" fill="#B5432E"/>
+          <circle cx="176" cy="250" r="8" fill="#B5432E"/>
+          <circle cx="182" cy="330" r="7.5" fill="#B5432E"/>
+          <g class="blossom" style="--dur:6.5s">
+            <g transform="translate(150 214)">
+              <g fill="#E7C4BC">
+                <ellipse cx="0" cy="-9" rx="4.5" ry="7"/>
+                <ellipse cx="8.5" cy="-2.5" rx="4.5" ry="7" transform="rotate(72 8.5 -2.5)"/>
+                <ellipse cx="5.5" cy="8" rx="4.5" ry="7" transform="rotate(144 5.5 8)"/>
+                <ellipse cx="-5.5" cy="8" rx="4.5" ry="7" transform="rotate(216 -5.5 8)"/>
+                <ellipse cx="-8.5" cy="-2.5" rx="4.5" ry="7" transform="rotate(288 -8.5 -2.5)"/>
+              </g>
+              <circle r="3" fill="#B5432E"/>
+            </g>
+          </g>
+        </svg>
+
+        <!-- Cluster bas-gauche -->
+        <svg class="hero__foliage hero__foliage--bl" data-parallax="0.06" viewBox="0 0 300 300" fill="none" focusable="false">
+          <path d="M6 300 C40 250 70 210 96 150 C110 118 120 84 124 40" stroke="#5F6138" stroke-width="3" stroke-linecap="round"/>
+          <path d="M70 208 C48 200 30 206 20 224" stroke="#5F6138" stroke-width="2" stroke-linecap="round"/>
+          <path d="M104 128 C126 122 146 128 156 146" stroke="#5F6138" stroke-width="2" stroke-linecap="round"/>
+          <g class="sway" style="--dur:8s">
+            <path d="M20 224 C-6 220 -20 236 -14 258 C12 256 24 242 20 224 Z" fill="#8A8B5C"/>
+          </g>
+          <g class="sway" style="--dur:9.2s;--delay:-3s">
+            <path d="M156 146 C182 146 196 162 190 184 C166 180 154 166 156 146 Z" fill="#8A8B5C"/>
+          </g>
+          <g class="sway" style="--dur:7.4s;--delay:-1.5s">
+            <path d="M124 40 C148 30 168 38 170 60 C146 66 128 58 124 40 Z" fill="#8A8B5C"/>
+          </g>
+          <circle cx="112" cy="96" r="7.5" fill="#B5432E"/>
+          <circle cx="100" cy="150" r="7" fill="#B5432E"/>
+          <g class="blossom" style="--dur:7s;--delay:-2s">
+            <g transform="translate(176 150)">
+              <g fill="#E7C4BC">
+                <ellipse cx="0" cy="-8" rx="4" ry="6"/>
+                <ellipse cx="7.6" cy="-2.5" rx="4" ry="6" transform="rotate(72 7.6 -2.5)"/>
+                <ellipse cx="4.7" cy="6.5" rx="4" ry="6" transform="rotate(144 4.7 6.5)"/>
+                <ellipse cx="-4.7" cy="6.5" rx="4" ry="6" transform="rotate(216 -4.7 6.5)"/>
+                <ellipse cx="-7.6" cy="-2.5" rx="4" ry="6" transform="rotate(288 -7.6 -2.5)"/>
+              </g>
+              <circle r="2.6" fill="#B5432E"/>
+            </g>
+          </g>
+        </svg>
+
+        <!-- Sprig bas-droite (comble la zone sous le pli) -->
+        <svg class="hero__foliage hero__foliage--br" data-parallax="0.05" viewBox="0 0 200 200" fill="none" focusable="false">
+          <path d="M194 200 C170 160 150 120 140 74" stroke="#5F6138" stroke-width="3" stroke-linecap="round"/>
+          <g class="sway" style="--dur:8.6s">
+            <path d="M140 74 C164 64 184 72 186 94 C162 100 144 92 140 74 Z" fill="#8A8B5C"/>
+          </g>
+          <g class="sway" style="--dur:7.2s;--delay:-2.5s">
+            <path d="M150 128 C128 120 110 126 100 144 C124 152 146 146 150 128 Z" fill="#8A8B5C"/>
+          </g>
+          <circle cx="150" cy="112" r="6.5" fill="#B5432E"/>
+        </svg>
+
+        <!-- Oiseau stylisé posé au sol (aile animée séparément lors de l'envol) -->
+        <svg class="hero__bird" viewBox="0 0 220 180" fill="none" focusable="false">
+          <ellipse class="bird__shadow" cx="96" cy="164" rx="52" ry="8" fill="#5F6138" opacity="0.18"/>
+          <path d="M150 96 C172 92 192 96 204 106 C190 114 170 116 152 110 Z" fill="#5F6138"/>
+          <path d="M58 100 C56 72 78 52 108 54 C136 56 156 76 156 100 C156 122 136 134 108 134 C82 134 60 124 58 100 Z" fill="#8A8B5C"/>
+          <path d="M70 112 C78 128 98 134 116 132 C104 138 84 136 72 126 Z" fill="#9EA06E"/>
+          <g class="bird__wing">
+            <path d="M96 78 C120 68 146 74 158 94 C142 104 118 108 98 102 C86 98 88 84 96 78 Z" fill="#5F6138"/>
+          </g>
+          <circle cx="70" cy="72" r="4.5" fill="#2E2A24"/>
+          <path d="M60 80 L42 74 L60 90 Z" fill="#B5432E"/>
+          <path d="M98 134 L94 156 M112 134 L116 156" stroke="#2E2A24" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+
       </div>
+
       <div class="container">
         <div class="hero__inner">
-          <h1>Mié Tanaka</h1>
-          <p class="hero__subtitle">Shiatsu · Tuina · Énergétique chinoise</p>
-          <p class="hero__text">Un moment précieux pour se détendre, libérer les tensions
+          <h1 class="rise" style="--i:0">Mié Tanaka</h1>
+          <p class="hero__subtitle rise" style="--i:1">Shiatsu · Tuina · Énergétique chinoise</p>
+          <p class="hero__text rise" style="--i:2">Un moment précieux pour se détendre, libérer les tensions
              et retrouver l'équilibre du corps et de l'esprit, à Besançon.</p>
-          <a class="btn btn--primary" href="contact.html">Prendre rendez-vous</a>
+          <a class="btn btn--primary rise" style="--i:3" href="contact.html">Prendre rendez-vous</a>
         </div>
       </div>
     </section>
