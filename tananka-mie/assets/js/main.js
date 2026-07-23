@@ -3,7 +3,9 @@
    1. Menu mobile
    2. Header sticky : ombre au scroll
    3. Révélation des sections au scroll (IntersectionObserver)
-   4. Parallaxe très léger sur les illustrations du hero
+   4. Parallaxe très léger sur le motif + les feuillages du hero
+   5. Année courante dans le footer
+   6. Envol de l'oiseau du hero au scroll (IntersectionObserver + état)
    Toutes les animations respectent prefers-reduced-motion.
    ========================================================================= */
 (function () {
@@ -81,4 +83,49 @@
   /* ---------- 5. Année courante dans le footer ---------- */
   const yearEl = document.querySelector("[data-year]");
   if (yearEl) { yearEl.textContent = String(new Date().getFullYear()); }
+
+  /* ---------- 6. Envol de l'oiseau du hero ----------
+     L'oiseau est posé au sol au chargement. Dès que la section hero quitte
+     nettement le viewport (ratio < 0.35), il s'envole (CSS : bird-takeoff).
+     Quand on remonte et que le hero redevient bien visible (ratio > 0.65),
+     il revient se poser (CSS : bird-land). État géré pour éviter les bugs
+     de va-et-vient. Désactivé en reduced-motion et sur mobile (oiseau masqué).
+     Réglages : durées/easings/trajectoire dans style.css (@keyframes bird-*). */
+  const hero = document.querySelector(".hero");
+  const bird = document.querySelector(".hero__bird");
+  const desktop = window.matchMedia("(min-width: 721px)").matches;
+  if (hero && bird && !reduceMotion && desktop && "IntersectionObserver" in window) {
+    let state = "grounded"; // "grounded" | "flying" | "landing"
+
+    const fly = function () {
+      if (state === "flying") { return; }
+      state = "flying";
+      bird.classList.remove("is-landing");
+      void bird.offsetWidth; // force un reflow pour rejouer proprement l'animation
+      bird.classList.add("is-flying");
+    };
+    const land = function () {
+      if (state === "grounded") { return; }
+      state = "landing";
+      bird.classList.remove("is-flying");
+      void bird.offsetWidth;
+      bird.classList.add("is-landing");
+    };
+
+    // Quand le retour se termine, on nettoie la classe pour revenir à l'état de base.
+    bird.addEventListener("animationend", function (e) {
+      if (e.animationName === "bird-land") {
+        bird.classList.remove("is-landing");
+        state = "grounded";
+      }
+    });
+
+    const io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.intersectionRatio < 0.35) { fly(); }
+        else if (entry.intersectionRatio > 0.65) { land(); }
+      });
+    }, { threshold: [0, 0.35, 0.65, 1] });
+    io.observe(hero);
+  }
 })();

@@ -72,9 +72,30 @@ Autres options : `npx serve` ou l'extension « Live Server » de VS Code.
 Horaires d'ouverture, avis clients / témoignages, galerie photo : emplacements prêts
 à intégrer dès que le contenu sera fourni (les horaires alimenteront aussi le Schema.org).
 
+## Animations de la page d'accueil (hero)
+
+La scène du hero est en **SVG inline** (branches, feuilles, baies, fleurs, oiseau)
+afin d'être animée et recolorée en CSS. Tout est en `transform`/`opacity` (pas de reflow).
+
+| Effet | Où l'ajuster | Réglages |
+|-------|--------------|----------|
+| **Apparition en cascade** du titre/sous-titre/texte/CTA | `style.css` → `@keyframes rise` / `.js .hero .rise` | Décalage entre éléments : `--i` dans le HTML × `130ms` ; durée/easing dans l'animation |
+| **Balancement des feuillages** (idle) | `style.css` → `@keyframes sway`, `.sway` | Amplitude dans les keyframes (`±1.4deg`) ; vitesse/décalage par élément via `--dur` / `--delay` dans le HTML |
+| **Respiration des fleurs** | `style.css` → `@keyframes blossom-breathe` | Amplitude/scale dans les keyframes ; `--dur` dans le HTML |
+| **Parallaxe** (motif de cercles + branches) | attribut `data-parallax="0.16"` dans le HTML ; logique dans `main.js` (§4) | Plus la valeur est haute, plus le déplacement est marqué |
+| **Envol de l'oiseau au scroll** | `style.css` → `@keyframes bird-takeoff` / `bird-land` ; déclenchement dans `main.js` (§6) | Trajectoire = valeurs `translate()` des keyframes ; durée/easing sur `.hero__bird.is-flying` ; seuils de déclenchement = `intersectionRatio` (0.35 / 0.65) |
+| **Battement d'ailes** | `style.css` → `@keyframes wingflap` | Angle et vitesse (`0.17s`) |
+| **Hover CTA** | `style.css` → `.btn--primary:hover` | `translateY(-2px)` + ombre + transition |
+
+Comportement de l'oiseau : posé au sol au chargement → s'envole en arc vers la branche
+haut-droite quand le hero quitte le viewport → revient se poser si l'on remonte en haut.
+Désactivé en `prefers-reduced-motion` et sur mobile (< 721 px).
+
 ## Accessibilité & performance
 
 - Responsive mobile-first (Grid/Flexbox), navigation clavier, lien d'évitement, focus visibles.
-- Contrastes conformes WCAG AA (texte crème sur kaki foncé, gris-brun sur crème).
-- `prefers-reduced-motion` respecté : animations et parallaxe désactivées.
-- SVG légers, polices en `display=swap`, JS en `defer`.
+- Contrastes conformes WCAG AA (texte anthracite/gris-brun sur crème, crème sur olive foncé).
+- `prefers-reduced-motion` respecté : cascade, balancements, parallaxe et envol désactivés
+  (l'oiseau reste posé, les feuillages statiques, le contenu pleinement visible).
+- Scène décorative en `aria-hidden` + `pointer-events:none` ; animations en `transform`/`opacity`.
+- SVG inline légers, polices en `display=swap`, JS en `defer`.
